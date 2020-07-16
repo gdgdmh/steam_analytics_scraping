@@ -11,6 +11,7 @@ def main():
     url = "https://store.steampowered.com/stats/?l=japanese"
     html = requests.get(url)
     soup = BeautifulSoup(html.content, "html.parser")
+    print(type(html))
     #  print(soup)
     # DOMの階層メモ
     # body class v6 responsive_page
