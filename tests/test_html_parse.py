@@ -32,3 +32,31 @@ def test_parse_steam_analytics():
         assert(False)
     else:
         pass
+
+
+def test_parse_exception_int():
+    """パース失敗例外(int変数)."""
+    num = 10
+    s = html_parse.HtmlParse(num)
+    try:
+        s.parse()
+    except ValueError:
+        pass
+    else:
+        assert(False)
+
+
+def test_parse_exception_response_error():
+    """パースレスポンス不正(HTTPステータスコード200以外)."""
+    r = get_response.GetResponse("https://www.google.com/?hl=ja")
+    r.request()
+    res = r.get()
+    res.status_code = 400
+    assert(res.status_code == 400)
+    s = html_parse.HtmlParse(res)
+    try:
+        s.parse()
+    except ValueError:
+        pass
+    else:
+        assert(False)
