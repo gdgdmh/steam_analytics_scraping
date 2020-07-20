@@ -2,6 +2,10 @@
 """エントリーポイント."""
 import requests
 from bs4 import BeautifulSoup
+from sas import get_response
+from sas import html_parse
+from sas import scraping
+from sas import ranking_data
 #  import re
 
 
@@ -41,17 +45,17 @@ def main():
     cnt = int(len(elem_gl))
     for i in range(cnt):
         game_names.append(elem_gl[i].text)
-    print(game_names)
+    # print(game_names)
 
-    try:
-        h = requests.get("aaa")
-        print(h)
-    except requests.exceptions.MissingSchema:
-        pass
-    except requests.exceptions.Timeout:
-        pass
-
-
+    # test
+    r = get_response.GetResponse("https://store.steampowered.com/stats/?l=japanese")
+    r.request()
+    res = r.get()
+    s = html_parse.HtmlParse(res)
+    s.parse()
+    soup = s.get()
+    sc = scraping.Scraping(soup)
+    sc.scraping()
 
 
 if __name__ == '__main__':
