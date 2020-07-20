@@ -4,6 +4,24 @@ from sas import get_response
 from sas import html_parse
 
 
+def test_get_default():
+    """デフォルトの状態でgetする(None)."""
+    dummy = ""
+    s = html_parse.HtmlParse(dummy)
+    assert(s.get() is None)
+
+
+def test_get_steam_analytics():
+    """steamのゲームデータページのパース後のBeautifulSoupオブジェクトの取得."""
+    r = get_response.GetResponse("https://store.steampowered.com/stats/?l=japanese")
+    r.request()
+    res = r.get()
+    s = html_parse.HtmlParse(res)
+    s.parse()
+    soup = s.get()
+    assert(soup is not None)
+
+
 def test_parse_google_site():
     """GoogleのページのHTMLパース(例外がおきなければ成功とする)."""
     r = get_response.GetResponse("https://www.google.com/?hl=ja")

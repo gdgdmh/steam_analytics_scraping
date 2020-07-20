@@ -6,10 +6,14 @@ from bs4 import BeautifulSoup
 class HtmlParse():
     """HTMLパースクラス."""
 
-    def __init__(self, response):
+    def __init__(self, response: object):
         """コンストラクタ."""
         self.__response = response
         self.__soup = None
+
+    def get(self) -> object:
+        """パース後のBeautifulSoupオブジェクトを取得する."""
+        return self.__soup
 
     def parse(self):
         """HTMLのパース."""
