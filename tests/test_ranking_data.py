@@ -114,3 +114,19 @@ def test_get_three():
     assert(d.get_name() == "XYZ")
     assert(d.get_current_user() == 1234567)
     assert(d.get_max_user() == 8901234)
+
+
+def test_print_zero():
+    """データの出力(0)."""
+    r = ranking_data.RankingData()
+    r.print()
+
+
+def test_print_three():
+    """データの出力(3)."""
+    r = ranking_data.RankingData()
+    count = 3
+    for _ in range(count):
+        g = game_data.GameData("abc", 1, 2)
+        r.add(g)
+    r.print()

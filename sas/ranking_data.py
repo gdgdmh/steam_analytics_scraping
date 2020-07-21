@@ -26,5 +26,6 @@ class RankingData():
         return self.__list[index]
 
     def print(self):
-        # """出力."""
-        pass
+        """出力."""
+        for g in self.__list:
+            g.print()

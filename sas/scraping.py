@@ -2,6 +2,7 @@
 """スクレイピングクラス(steam analyticsページのアクティブ数のスクレイピング)."""
 from bs4 import BeautifulSoup
 from sas import game_data
+from sas import ranking_data
 
 
 class Scraping():
@@ -10,7 +11,7 @@ class Scraping():
     def __init__(self, soup: object):
         """コンストラクタ."""
         self.__soup = soup
-        self.__ranking_data = []
+        self.__ranking_data = ranking_data.RankingData()
 
     def scraping(self):
         """スクレイピングの実行."""
@@ -31,7 +32,8 @@ class Scraping():
         for i in range(title_count):
             rd = game_data.GameData(
                 titles[i].text, counts[i * 2].text, counts[(i * 2) + 1].text)
-            self.__ranking_data.append(rd)
+            self.__ranking_data.add(rd)
+        self.__ranking_data.print()
 
     def _check_beautiful_soup_object(self, obj) -> bool:
         """BeautifulSoupオブジェクトかチェック."""

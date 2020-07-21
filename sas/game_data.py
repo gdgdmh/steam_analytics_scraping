@@ -26,5 +26,5 @@ class GameData():
 
     def print(self):
         """出力."""
-        print("[" + self.__name + "," +
-              str(self.__current_user) + "," + str(self.__max_user) + "]")
+        print("[" + self.__name + " " +
+              str(self.__current_user) + " " + str(self.__max_user) + "]")
