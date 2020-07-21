@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 """スクレイピングクラス(steam analyticsページのアクティブ数のスクレイピング)."""
-from bs4 import BeautifulSoup
 from sas import game_data
 from sas import ranking_data
 
@@ -28,11 +27,18 @@ class Scraping():
         title_count = int(len(titles))
         # 要素数をチェック
         assert((player_count / 2) == title_count)
-
+        # データを生成
         for i in range(title_count):
             rd = game_data.GameData(
                 titles[i].text, counts[i * 2].text, counts[(i * 2) + 1].text)
             self.__ranking_data.add(rd)
+
+    def find_name(self, game_title: str):
+        """名前の取得."""
+        pass
+
+    def print(self):
+        """スクレイピング後のデータを出力."""
         self.__ranking_data.print()
 
     def _check_beautiful_soup_object(self, obj) -> bool:
