@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-"""steamのランキングデータクラス(ゲームタイトル, 本日の現在のユーザー数, 本日の最大ユーザー数)."""
+"""steamのゲームデータクラス(ゲームタイトル, 本日の現在のユーザー数, 本日の最大ユーザー数)."""
 
 
-class RankingData():
-    """steamのランキングデータクラス."""
+class GameData():
+    """steamのゲームデータクラス."""
 
     def __init__(self, name: str,
                  current_user: int, max_user: int):
@@ -23,3 +23,8 @@ class RankingData():
     def get_max_user(self) -> int:
         """最大ユーザー数の取得."""
         return self.__max_user
+
+    def print(self):
+        """出力."""
+        print("[" + self.__name + "," +
+              str(self.__current_user) + "," + str(self.__max_user) + "]")

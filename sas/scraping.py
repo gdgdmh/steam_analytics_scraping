@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """スクレイピングクラス(steam analyticsページのアクティブ数のスクレイピング)."""
 from bs4 import BeautifulSoup
-from sas import ranking_data
+from sas import game_data
 
 
 class Scraping():
@@ -29,7 +29,7 @@ class Scraping():
         assert((player_count / 2) == title_count)
 
         for i in range(title_count):
-            rd = ranking_data.RankingData(
+            rd = game_data.GameData(
                 titles[i].text, counts[i * 2].text, counts[(i * 2) + 1].text)
             self.__ranking_data.append(rd)
 
