@@ -56,6 +56,11 @@ def main():
     soup = s.get()
     sc = scraping.Scraping(soup)
     sc.scraping()
+    d = sc.find_name("Cou")
+    if d:
+        print("game title    " + d.get_name())
+        print("current user  " + d.get_current_user())
+        print("max user      " + d.get_max_user())
 
 
 if __name__ == '__main__':
