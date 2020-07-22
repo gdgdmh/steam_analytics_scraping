@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 """スクレイピングクラス(steam analyticsページのアクティブ数のスクレイピング)."""
+import re
 from sas import game_data
 from sas import ranking_data
 
@@ -33,9 +34,15 @@ class Scraping():
                 titles[i].text, counts[i * 2].text, counts[(i * 2) + 1].text)
             self.__ranking_data.add(rd)
 
-    def find_name(self, game_title: str):
-        """名前の取得."""
-        pass
+    def find_name(self, game_title: str) -> object:
+        """名前からデータを取得."""
+        for i in range(self.__ranking_data.length()):
+            ptn = game_title
+            match = "r'" + self.__ranking_data.get(i).get_name() + "'"
+            r = re.search(ptn, match)
+            if r:
+                return self.__ranking_data.get(i)
+        return None
 
     def print(self):
         """スクレイピング後のデータを出力."""
