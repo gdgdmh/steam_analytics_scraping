@@ -23,7 +23,8 @@ class SasMain():
 
     def _get_response(self):
         """HTMLデータをリクエストして取得する."""
-        self.__res = get_response.GetResponse("https://store.steampowered.com/stats/?l=japanese")
+        url = "https://store.steampowered.com/stats/?l=japanese"
+        self.__res = get_response.GetResponse(url)
         self.__res.request()
 
     def _parse(self):
@@ -45,3 +46,8 @@ class SasMain():
             print("game title    " + d.get_name())
             print("current user  " + d.get_current_user())
             print("max user      " + d.get_max_user())
+
+    def _print_example_command(self):
+        """コマンド例を出力."""
+        print("コマンドを入力して下さい")
+        print("終了:exit ")
