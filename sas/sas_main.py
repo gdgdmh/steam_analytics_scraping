@@ -21,6 +21,10 @@ class SasMain():
         self._scraping()
         self._find_name("Cou")
 
+    def task2(self):
+        """メイン処理."""
+        self._routine()
+
     def _get_response(self):
         """HTMLデータをリクエストして取得する."""
         url = "https://store.steampowered.com/stats/?l=japanese"
@@ -51,3 +55,29 @@ class SasMain():
         """コマンド例を出力."""
         print("コマンドを入力して下さい")
         print("終了:exit ")
+
+    def _routine(self):
+        """ルーチン処理."""
+        # データ取得、スクレイピング
+        self._routine_get_data()
+        self._routine_parse()
+        self._routine_scraping()
+        # ユーザーに聞く処理
+        self._routine_ask()
+        pass
+
+    def _routine_get_data(self):
+        """データ取得処理."""
+        self._get_response()
+
+    def _routine_parse(self):
+        """パース処理."""
+        self._parse()
+
+    def _routine_scraping(self):
+        """スクレイピング."""
+        self._scraping()
+
+    def _routine_ask(self):
+        """ユーザーに聞く処理."""
+        pass
