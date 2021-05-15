@@ -80,4 +80,13 @@ class SasMain():
 
     def _routine_ask(self):
         """ユーザーに聞く処理."""
+        print("表示するゲームを入力して下さい")
+        print("前方一致で検索します")
+
+    def _routine_input(self):
+        """検索入力."""
+        pass
+
+    def _routine_display_result(self):
+        """検索結果を表示する."""
         pass
