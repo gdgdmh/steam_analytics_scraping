@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 """エントリーポイント."""
-import requests
-from bs4 import BeautifulSoup
-from sas import get_response
-from sas import html_parse
-from sas import scraping
-from sas import ranking_data
 from sas import sas_main
-#  import re
 
 
 def main():
